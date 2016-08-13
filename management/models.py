@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 from management.app_settings import USER_TYPES, DEFAULT_USER_TYPE
 
@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     # firstname, lastname, email, date_joined
     user = models.OneToOneField(User)
     user_type = models.CharField(
-        choices=USER_TYPES, default=DEFAULT_USER_TYPE)
+        choices=USER_TYPES, default=DEFAULT_USER_TYPE, max_length=255)
     add1 = models.CharField(max_length=500, null=True, blank=True)
     add2 = models.CharField(max_length=500, null=True, blank=True)
     pin = models.CharField(max_length=20)
